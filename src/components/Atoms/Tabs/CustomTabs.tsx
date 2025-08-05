@@ -1,7 +1,12 @@
 import Box from '@mui/material/Box';
-import Tab from '@mui/material/Tab';
-import Tabs from '@mui/material/Tabs';
+import {
+  IconBuilding,
+  IconPlaneTilt,
+  IconSpeedboat,
+} from '@tabler/icons-react';
 import * as React from 'react';
+
+import { CustomTab, CustomTabs } from '../Card/styles';
 
 interface TabPanelProps {
   children?: React.ReactNode;
@@ -32,7 +37,7 @@ function a11yProps(index: number) {
   };
 }
 
-export default function CustomTabs() {
+export default function CustomTabItem() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
@@ -42,15 +47,28 @@ export default function CustomTabs() {
   return (
     <Box sx={{ width: '100%' }}>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs
+        <CustomTabs
+          slotProps={{
+            indicator: {
+              style: { backgroundColor: '#10b981' },
+            },
+          }}
           value={value}
           onChange={handleChange}
           aria-label="basic tabs example"
         >
-          <Tab label="Item One" {...a11yProps(0)} />
-          <Tab label="Item Two" {...a11yProps(1)} />
-          <Tab label="Item Three" {...a11yProps(2)} />
-        </Tabs>
+          <CustomTab
+            icon={<IconPlaneTilt />}
+            label="Flight"
+            {...a11yProps(0)}
+          />
+          <CustomTab icon={<IconBuilding />} label="Hotel" {...a11yProps(1)} />
+          <CustomTab
+            icon={<IconSpeedboat />}
+            label="Holiday"
+            {...a11yProps(2)}
+          />
+        </CustomTabs>
       </Box>
       <CustomTabPanel value={value} index={0}>
         Item One

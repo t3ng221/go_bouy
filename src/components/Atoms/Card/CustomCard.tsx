@@ -1,11 +1,12 @@
-import CardContent from '@mui/material/CardContent';
-
-import { StyledCard } from './styles';
+import CustomTabItem from '../Tabs/CustomTabs';
+import { CustomCardContent, StyledCard } from './styles';
 
 export default function CustomCard() {
   return (
     <StyledCard>
-      <CardContent>Hello</CardContent>
+      <CustomCardContent>
+        <CustomTabItem />
+      </CustomCardContent>
     </StyledCard>
   );
 }
